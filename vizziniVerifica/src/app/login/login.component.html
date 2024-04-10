@@ -1,0 +1,63 @@
+<div *ngIf="loginSuccesso==false && regSuccess==false">
+    <div>
+        <h1>Selezionare tipo di operazione</h1>
+        <button (click)="loginUtente()">Login</button>
+        <br><br>
+        <button (click)="nuovoUtente()">Registration</button>
+    </div>
+<br>
+    <div *ngIf="utente">
+        <hr>
+        <h3 class="error" *ngIf="errorLogin">ERRORE! Username o password sbagliati!</h3>
+        <h1>Login</h1>
+        <div>
+            <label>Username: <input type="text" [(ngModel)]="utente.username" placeholder="(obbligatorio)"></label>
+        </div>
+        <br>
+        <div>
+            <label>Password: <input type="password" [(ngModel)]="utente.password" placeholder="(obbligatorio)"></label>
+        </div>
+        <br>
+        <div>
+            <button (click)="login()">Login</button>
+        </div>
+    </div>
+    
+    <div *ngIf="newUtente">
+        <hr>
+        <h1>Registration</h1>
+        <div>
+            <label>Username: <input type="text" [(ngModel)]="newUtente.username" placeholder="(obbligatorio)"></label>
+        </div>
+        <br>
+        <div>
+            <label>Password: <input type="password" [(ngModel)]="newUtente.password" placeholder="(obbligatorio)"></label>
+        </div>
+        <br>
+        <div>
+            <label>Email: <input type="text" [(ngModel)]="newUtente.email" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Name: <input type="text" [(ngModel)]="newUtente.name" required></label>
+        </div>
+        <br>
+        <div>
+            <label>Surname: <input type="text" [(ngModel)]="newUtente.surname" required></label>
+        </div>
+        <br>
+        <div>
+            <button (click)="registration()">Register</button>
+        </div>
+    </div>
+</div>    
+
+<div *ngIf="loginSuccesso==true">
+    <h1 class="success">Login avvenuto con successo</h1>
+    <button (click)="indietro()">Entra con un altro account</button>
+</div>
+
+<div *ngIf="regSuccess==true">
+    <h1 class="success">Registrazione avvenuto con successo</h1>
+    <button (click)="indietro()">Torna pagina iniziale</button>
+</div>
